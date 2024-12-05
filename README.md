@@ -46,34 +46,33 @@ HTML/CSS: Construcción de la interfaz de usuario.
 JavaScript: Implementación de la lógica y los algoritmos.
 PHP (Opcional): Para el manejo de formularios y cálculos en el servidor (opcional en el módulo de programación dinámica).
 Visual Studio Code / Navegador Web: Para desarrollo y ejecución local.
+
 Estructura del Proyecto
+- Los archivos del proyecto están organizados en las siguientes carpetas:
+  - `/teoria_colas`: Modelos relacionados con sistemas de colas, incluyendo:
+    - Modelo de líneas de espera de múltiples servidores
+    - Modelo de línea de espera con fuentes finitas
+    - Modelo de línea de espera con un servidor con llegadas Poisson
+    - Modelo de línea de espera con un servidor
+    - Esquema de nacimiento y muerte en sistemas de colas
+    - Modelo de múltiples canales con llegadas Poisson
+  - `/programacion_lineal`: Modelos de optimización y programación lineal, tales como:
+    - Programación separable
+    - Programación No Convexa
+    - Programación Fraccionaria
+    - Programación Cuadrática
+    - Optimización no restringida con una variable
+    - Programación Convexa
+  - `/programacion_dinamica`: Aplicaciones de programación dinámica en diversos problemas, como:
+    - Distribución de Científicos entre grupos de investigación
+    - Determinación de Holgura por rechazos
+    - Programación del Nivel de Empleados
+    - Modelo de Tamaño de la Fuerza de Trabajo
+    - Programación Dinámica Probabilística
+    - Distribución de Brigadas Médicas entre países
+  - `/README.md`: Documento de introducción y descripción general del proyecto.
 
-Los archivos del proyecto están organizados en las siguientes carpetas:
-
-/teoria_colas: Modelos relacionados con sistemas de colas, incluyendo:
-  -Modelo de líneas de espera de múltiples servidores
-  -Modelo de línea de espera con fuentes finitas
-  -Modelo de línea de espera con un servidor con llegadas Poisson
-  -Modelo de línea de espera con un servidor
-  -Esquema de nacimiento y muerte en sistemas de colas
-  -Modelo de múltiples canales con llegadas Poisson
-/programacion_lineal: Modelos de optimización y programación lineal, tales como:
-
-  -Programación separable
-  -Programación No Convexa
-  -Programación Fraccionaria
-  -Programación Cuadrática
-  -Optimización no restringida con una variable
-  -Programación Convexa
-/programacion_dinamica: Aplicaciones de programación dinámica en diversos problemas, como:
-
-  -Distribución de Científicos entre grupos de investigación
-  -Determinación de Holgura por rechazos
-  -Programación del Nivel de Empleados
-  -Modelo de Tamaño de la Fuerza de Trabajo
-  -Programación Dinámica Probabilística
-  -Distribución de Brigadas Médicas entre países
-README.md: Documento de introducción y descripción general del proyecto.
+Este formato está listo para ser utilizado en un archivo README de forma clara y organizada.
 
 Autor
 Este trabajo fue realizado como parte de un proyecto educativo sobre métodos avanzados de optimización. Para preguntas o sugerencias, por favor contacta a:
