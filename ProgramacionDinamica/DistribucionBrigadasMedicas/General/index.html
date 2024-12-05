@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Optimización</title>
+  </head>
+  <body>
+    <h1>Asignación Óptima</h1>
+    <form id="configForm">
+      <label for="numPaises">Número de Filas:</label>
+      <input type="number" id="numPaises" min="1" max="5" value="3" />
+      <br />
+      <label for="numBrigadas">Número de Columnas:</label>
+      <input type="number" id="numBrigadas" min="1" max="10" value="5" />
+      <br />
+      <button type="button" onclick="generarFormulario()">
+        Generar Formulario
+      </button>
+    </form>
+    <div id="formularioEficiencia"></div>
+    <div id="resultado"></div>
+    <script src="script2.js"></script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modelo M/M/s</title>
+    <link rel="stylesheet" href="mms.css" />
+  </head>
+  <body>
+    <div class="hero">
+      <h1>Calculadora de Teoría de Colas - Modelo M/M/c</h1>
+      <a href="../index.html" class="back-button">
+          <i class="fas fa-arrow-left"></i> Volver
+      </a>
+  </div>
+    <div class="container">
+      <form id="queueForm">
+        <div class="form-group">
+          <label for="lambda">Tasa de llegada ( λ ): </label>
+          <input type="number" id="lambda" step="0.01" required />
+        </div>
+        <div class="form-group">
+          <label for="mu">Tasa de servicio por servidor ( μ ): </label>
+          <input type="number" id="mu" step="0.01" required />
+        </div>
+        <div class="form-group">
+          <label for="servers">Número de servidores ( c ): </label>
+          <input type="number" id="servers" min="1" required />
+        </div>
+        <button type="button" id="calculateBtn">Calcular</button>
+      </form>
+      <div id="results" class="hidden">
+        <h2>Resultados</h2>
+        <p>
+          <strong>Utilización del sistema ( p ):</strong> <span id="rho"></span>
+        </p>
+        <p>
+          <strong>Probabilidad de sistema vacío ( P0 ):</strong>
+          <span id="p0"></span>
+        </p>
+        <p>
+          <strong>Número promedio en el sistema ( L ):</strong>
+          <span id="l"></span>
+        </p>
+        <p>
+          <strong>Número promedio en la cola ( Lq ):</strong>
+          <span id="lq"></span>
+        </p>
+        <p>
+          <strong>Tiempo promedio en el sistema ( W ):</strong>
+          <span id="w"></span> horas
+        </p>
+        <p>
+          <strong>Tiempo promedio en la cola ( Wq ):</strong>
+          <span id="wq"></span> horas
+        </p>
+      </div>
+    </div>
+    <script src="mms.js"></script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Optimización de Brigadas Médicas</title>
+  </head>
+  <body>
+    <div class="hero">
+      <h1>Asignación Óptima de Brigadas Médicas</h1>
+      <a href="../../index.html" class="back-button">
+          <i class="fas fa-arrow-left"></i> Volver
+      </a>
+    </div>
+    <form id="inputForm">
+      <label for="brigadas">Número de Brigadas:</label>
+      <input type="number" id="brigadas" min="1" max="10" value="5" />
+      <br />
+      <label for="paises">Número de Países:</label>
+      <input type="number" id="paises" min="1" max="5" value="3" />
+      <br />
+      <button type="button" onclick="calcular()">Calcular</button>
+    </form>
+    <div id="resultado"></div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programación Cuadrática</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>Programación Cuadrática </h1>
+      <br><a href="../index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Volver
+    </a>
+    </header>
+    <div class="container">
+      <form id="optimization-form">
+        <h2>Función Objetivo</h2>
+        <label for="c1">Coeficiente de x1:</label>
+        <input type="number" id="c1" name="c1" required step="0.01" value="6" />
+        <label for="c2">Coeficiente de x2:</label>
+        <input type="number" id="c2" name="c2" required step="0.01" value="3" />
+        <label for="c1sq">Coeficiente de x1²:</label>
+        <input
+          type="number"
+          id="c1sq"
+          name="c1sq"
+          required
+          step="0.01"
+          value="2"
+        />
+        <label for="c2sq">Coeficiente de x2²:</label>
+        <input
+          type="number"
+          id="c2sq"
+          name="c2sq"
+          required
+          step="0.01"
+          value="3"
+        />
+
+        <h2>Restricciones</h2>
+        <label for="r1">x1 + x2 ≤</label>
+        <input type="number" id="r1" name="r1" required step="0.01" value="1" />
+        <label for="r2">2x1 + 3x2 ≤</label>
+        <input type="number" id="r2" name="r2" required step="0.01" value="4" />
+
+        <button type="submit">Resolver</button>
+      </form>
+      <div class="output" id="output">
+        <p>
+          Ingresa los datos y presiona "Resolver" para calcular la solución.
+        </p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modelo M/G/1 </title>
+    <link rel="stylesheet" href="mg1.css" />
+  </head>
+  <body>
+    <div class="hero">
+      <h1>Modelo M/G/1 </h1>
+      <a href="../index.html" class="back-button">
+          <i class="fas fa-arrow-left"></i> Volver
+      </a>
+  </div>
+  
+    <div class="container">
+      
+      <form id="queueForm">
+        <div class="form-group">
+          <label for="lambda"
+            >Tasa de llegada ( λ ) (trabajos/hora):
+          </label>
+          <input type="text" id="lambda" placeholder="Ejemplo: 2/8" required />
+        </div>
+        <div class="form-group">
+          <label for="mu">Tasa de servicio ( μ ) (trabajos/hora): </label>
+          <input type="text" id="mu" placeholder="Ejemplo: 5/16" required />
+        </div>
+        <div class="form-group">
+          <label for="sigma"
+            >Desviación estándar ( σ ) (horas):
+          </label>
+          <input
+            type="number"
+            id="sigma"
+            step="0.01"
+            placeholder="Ejemplo: 2"
+            required
+          />
+        </div>
+        <button type="button" id="calculateBtn">Calcular</button>
+      </form>
+
+      <div id="results" class="hidden">
+        <h2>Resultados</h2>
+        <p>
+          <strong>Tasa media de llegada ( λ ):</strong>
+          <span id="lambdaResult"></span> trabajos/hora
+        </p>
+        <p>
+          <strong>Tasa media de servicio ( μ ):</strong>
+          <span id="muResult"></span> trabajos/hora
+        </p>
+        <p>
+          <strong>Número promedio en espera ( Lq ):</strong>
+          <span id="lq"></span>
+        </p>
+        <p>
+          <strong>Promedio de espera antes de ser atendido ( Wq ):</strong>
+          <span id="wq"></span> horas
+        </p>
+        <p>
+          <strong>Tiempo promedio en el sistema ( W ):</strong>
+          <span id="w"></span> horas
+        </p>
+        <p>
+          <strong>Porcentaje de tiempo ocupado ( rho ):</strong>
+          <span id="rho"></span>%
+        </p>
+      </div>
+    </div>
+    <script src="mg1.js"></script>
+  </body>
+</html>

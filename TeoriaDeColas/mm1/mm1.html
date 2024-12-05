@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelo M/M/1</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../calculator-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="hero">
+        <h1>Calculadora de Teoría de Colas - Modelo M/M/1</h1>
+        <a href="../index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+    </div>
+    <div class="container">
+        <form id="queueForm">
+            <div class="form-group">
+                <label for="lambda">Tasa de llegada ( λ ): </label>
+                <input type="number" id="lambda" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="mu">Tasa de servicio ( μ ): </label>
+                <input type="number" id="mu" step="0.01" required>
+            </div>
+            <button type="button" id="calculateBtn">Calcular</button>
+        </form>
+        <div id="results" class="hidden"><br>
+            <h2>Resultados</h2>
+            <p><strong>Utilización del servidor:</strong> <span id="rho"></span></p>
+            <p><strong>Número promedio en el sistema:</strong> <span id="l"></span></p>
+            <p><strong>Número promedio en la cola:</strong> <span id="lq"></span></p>
+            <p><strong>Tiempo promedio en el sistema:</strong> <span id="w"></span> horas</p>
+            <p><strong>Tiempo promedio en la cola:</strong> <span id="wq"></span> horas</p>
+            <p><strong>Probabilidad de que no haya clientes:</strong> <span id="P0"></span></p>
+            <p><strong>Probabilidad de que el cliente espere:</strong> <span id="Pw"></span></p>
+
+        </div>
+    </div>
+    <script src="mm1.js"></script>
+</body>
+</html>

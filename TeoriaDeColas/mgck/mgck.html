@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modelo M/G/c/K</title>
+    <link rel="stylesheet" href="mgck.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="hero">
+      <h1>Modelo M/G/c/K - Notación de Kendall</h1>
+      <a href="../index.html" class="back-button">
+          <i class="fas fa-arrow-left"></i> Volver
+      </a>
+  </div>
+    <div class="container">
+      
+      <form id="queueForm">
+        <div class="form-group">
+          <label for="lambda">Tasa de llegada ( λ ): </label>
+          <input type="number" id="lambda" step="0.01" required />
+        </div>
+        <div class="form-group">
+          <label for="mu">Tasa promedio de servicio ( μ ): </label>
+          <input type="number" id="mu" step="0.01" required />
+        </div>
+        <div class="form-group">
+          <label for="c">Número de servidores ( c ): </label>
+          <input type="number" id="c" min="1" required />
+        </div>
+        <div class="form-group">
+          <label for="k">Número máximo de clientes ( K ): </label>
+          <input type="number" id="k" min="1" required />
+        </div>
+        <button type="button" id="calculateBtn">Calcular</button>
+      </form>
+
+      <div id="results" class="hidden">
+        <h2>Resultados</h2>
+        <p>
+          <strong>Utilización del sistema ( rho ):</strong>
+          <span id="rho"></span>
+        </p>
+        <p>
+          <strong>Número promedio de clientes en el sistema ( L ):</strong>
+          <span id="l"></span>
+        </p>
+        <p><strong>Probabilidades de ocupación de servidores:</strong></p>
+        <ul id="occupancyProbabilities"></ul>
+      </div>
+    </div>
+    <script src="mgck.js"></script>
+  </body>
+</html>

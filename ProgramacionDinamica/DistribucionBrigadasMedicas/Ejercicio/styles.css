@@ -1,0 +1,100 @@
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #5c6ac4;
+  --background-color: #f5f7fa;
+  --text-color: #2d3748;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f5f7fa; /* Fondo azul claro */
+  color: #2d3748; /* Color de texto principal */
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+table {
+  margin: 20px 0;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff; /* Fondo blanco */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+  border-radius: 8px; /* Bordes redondeados */
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ddd; /* Bordes claros */
+}
+
+th {
+  background-color: #eaf2fa; /* Azul claro para encabezados */
+  color: #2d3748; /* Texto oscuro */
+}
+
+h2,
+h3 {
+  color: #4a90e2; /* Azul primario */
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9; /* Fondo alternativo para filas */
+}
+.hero {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero h1 {
+      font-size: 2rem;
+  }
+  
+  .hero h2 {
+      font-size: 1.2rem;
+  }
+  
+  .nav-icon {
+      top: 1rem;
+      left: 1rem;
+  }
+  
+  .container {
+      grid-template-columns: 1fr;
+  }
+}
+

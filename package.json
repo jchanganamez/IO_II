@@ -1,0 +1,11 @@
+{
+  "name": "investigacion-operativa",
+  "version": "1.0.0",
+  "description": "Proyecto de Investigación Operativa",
+  "scripts": {
+    "start": "serve ."
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
+}

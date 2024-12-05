@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Esquema de Nacimiento y Muerte</title>
+    <link rel="stylesheet" href="bmltmc.css" />
+  </head>
+  <body>
+    <div class="hero">
+      <h1>Esquema de Nacimiento y Muerte</h1>
+      <a href="../index.html" class="back-button">
+          <i class="fas fa-arrow-left"></i> Volver
+      </a>
+  </div>
+    <div class="container">
+      
+      <form id="queueForm">
+        <div class="form-group">
+          <label for="lambda">Tasa de llegada (λ): </label>
+          <input type="number" id="lambda" step="0.01" required />
+        </div>
+        <div class="form-group">
+          <label for="mu">Tasa de servicio (μ): </label>
+          <input type="number" id="mu" step="0.01" required />
+        </div>
+        <div class="form-group">
+          <label for="states">Número máximo de estados (n): </label>
+          <input type="number" id="states" min="1" required />
+        </div>
+        <button type="button" id="calculateBtn">Calcular</button>
+      </form>
+      <div id="results" class="hidden">
+        <h2>Resultados</h2>
+        <p>
+          <strong
+            >Probabilidad de que el sistema esté vacío (P<sub>0</sub>):</strong
+          >
+          <span id="P0"></span>
+        </p>
+        <p><strong>Probabilidades estacionarias:</strong></p>
+        <div id="stateProbabilities"></div>
+        <p>
+          <strong>Longitud promedio de la cola (Lq):</strong>
+          <span id="lq"></span>
+        </p>
+        <p>
+          <strong>Tiempo promedio en la cola (Wq):</strong>
+          <span id="wq"></span> minutos
+        </p>
+        <p>
+          <strong>Número promedio en el sistema (L):</strong>
+          <span id="l"></span>
+        </p>
+        <p>
+          <strong>Tiempo promedio en el sistema (W):</strong>
+          <span id="w"></span> minutos
+        </p>
+        <p>
+          <strong>Utilización del sistema (1 - P<sub>0</sub>):</strong>
+          <span id="rho"></span>
+        </p>
+      </div>
+    </div>
+    <script src="bmltmc.js"></script>
+  </body>
+</html>

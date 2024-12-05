@@ -1,0 +1,143 @@
+/* Common styles for all calculator pages */
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #5c6ac4;
+    --success-color: #48bb78;
+    --error-color: #e53e3e;
+    --background-color: #f5f7fa;
+    --card-bg: #ffffff;
+    --text-color: #2d3748;
+    --border-color: #e2e8f0;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.calculator-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+input[type="number"],
+input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-1px);
+}
+
+.results {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: var(--background-color);
+    border-radius: 6px;
+    border-left: 4px solid var(--success-color);
+}
+
+.results h2 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.results p {
+    margin-bottom: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.results p:last-child {
+    border-bottom: none;
+}
+
+.results strong {
+    color: var(--text-color);
+}
+
+.results span {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .calculator-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
+    .results {
+        padding: 1rem;
+    }
+}
+
+/* Error states */
+.error {
+    color: var(--error-color);
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+input.error {
+    border-color: var(--error-color);
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Success message */
+.success-message {
+    background: #f0fff4;
+    border-left: 4px solid var(--success-color);
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 6px;
+}

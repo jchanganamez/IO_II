@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Distribución de Científicos</title>
+    <style>
+        :root {
+  --primary-color: #4a90e2;
+  --secondary-color: #5c6ac4;
+  --background-color: #f5f7fa;
+  --text-color: #2d3748;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* Base styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+}
+
+/* Contenedor */
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: var(--card-shadow);
+  text-align: center;
+}
+
+/* Título */
+h1 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+/* Botones */
+button {
+  padding: 0.8rem 1.5rem;
+  margin: 1rem 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+/* Resultados */
+#resultado {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 5px;
+  background: #e9f7ef;
+  color: var(--text-color);
+  display: none;
+}
+
+/* Errores */
+#error {
+  color: red;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+
+
+
+
+
+
+/* Hero section */
+.hero {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero h1 {
+      font-size: 2rem;
+  }
+  
+  .hero h2 {
+      font-size: 1.2rem;
+  }
+  
+  .nav-icon {
+      top: 1rem;
+      left: 1rem;
+  }
+  
+  .container {
+      grid-template-columns: 1fr;
+  }
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Distribución de Científicos</h1>
+        <a href="../index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+    </div>
+    <div class="container">
+        <h2>Minimización de la Probabilidad de Fracaso</h2>
+        <form id="data-form">
+            <div class="input-group">
+                <label for="scientists">Cantidad de científicos adicionales disponibles:</label>
+                <input type="number" id="scientists" min="1" value="2" required>
+            </div>
+            <div class="input-group">
+                <label>Probabilidades de fracaso para cada equipo según el número de científicos asignados:</label>
+                <p>Equipo 1 (probabilidades separadas por comas, ej: 0.4,0.2,0.15):</p>
+                <input type="text" id="team1" value="0.4,0.2,0.15" required>
+                <p>Equipo 2:</p>
+                <input type="text" id="team2" value="0.6,0.4,0.2" required>
+                <p>Equipo 3:</p>
+                <input type="text" id="team3" value="0.8,0.5,0.3" required>
+            </div>
+            <button type="button" onclick="calcular()">Resolver Problema</button>
+        </form>
+        <div id="resultados" class="result" style="display:none;">
+            <h3>Resultados</h3>
+            <p id="asignaciones"></p>
+            <p id="probabilidad"></p>
+        </div>
+    </div>
+
+    <script>
+        function calcular() {
+            // Obtener datos del formulario
+            const scientists = parseInt(document.getElementById("scientists").value, 10);
+            const team1 = document.getElementById("team1").value.split(',').map(Number);
+            const team2 = document.getElementById("team2").value.split(',').map(Number);
+            const team3 = document.getElementById("team3").value.split(',').map(Number);
+
+            const probabilidadesFracaso = { 1: team1, 2: team2, 3: team3 };
+
+            const f = {};
+            const decision = {};
+
+            let n = 3;
+            f[n] = {};
+            for (let s3 = 0; s3 <= scientists; s3++) {
+                f[n][s3] = Math.min(...probabilidadesFracaso[n].slice(0, s3 + 1));
+                decision[`${n},${s3}`] = probabilidadesFracaso[n].indexOf(f[n][s3]);
+            }
+
+            for (n = 2; n >= 1; n--) {
+                f[n] = {};
+                for (let s = 0; s <= scientists; s++) {
+                    f[n][s] = Infinity;
+                    for (let x = 0; x <= s; x++) {
+                        const costo = probabilidadesFracaso[n][x] * (f[n + 1][s - x] || 1);
+                        if (costo < f[n][s]) {
+                            f[n][s] = costo;
+                            decision[`${n},${s}`] = x;
+                        }
+                    }
+                }
+            }
+
+            const asignaciones = {};
+            let s_actual = scientists;
+            for (n = 1; n <= 3; n++) {
+                asignaciones[n] = decision[`${n},${s_actual}`];
+                s_actual -= asignaciones[n];
+            }
+
+            document.getElementById("asignaciones").innerText = `Asignaciones óptimas: 
+            Equipo 1: ${asignaciones[1]} científicos,
+            Equipo 2: ${asignaciones[2]} científicos,
+            Equipo 3: ${asignaciones[3]} científicos.`;
+            document.getElementById("probabilidad").innerText = 
+                `Probabilidad mínima de fracaso combinada: ${f[1][scientists].toFixed(3)}`;
+            document.getElementById("resultados").style.display = "block";
+        }
+    </script>
+</body>
+</html>

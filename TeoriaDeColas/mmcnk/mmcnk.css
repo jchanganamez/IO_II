@@ -1,0 +1,121 @@
+/* Root variables */
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #5c6ac4;
+  --background-color: #f5f7fa;
+  --text-color: #2d3748;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --white: #fff;
+  --border-color: #ccc;
+  --button-hover: #4a90e2;
+  --button-bg: #5c6ac4;
+}
+
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: 'Poppins', sans-serif; /* Changed to Poppins */
+  background: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+/* Container */
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--card-shadow);
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Labels and Inputs */
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-color); /* Adjusted to the main text color */
+}
+
+input,
+button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+input {
+  border: 1px solid var(--border-color);
+}
+
+button {
+  background: var(--button-bg);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background: var(--button-hover);
+}
+
+/* Results */
+#results {
+  margin-top: 20px;
+  background: #f9f9f9;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Hero section */
+.hero {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  text-align: center;
+  padding: 4rem 2rem;
+  margin-bottom: 3rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero h2 {
+    font-size: 1.2rem;
+  }
+
+  .container {
+    width: 90%;
+    padding: 15px;
+  }
+}

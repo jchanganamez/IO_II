@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programación Geométrica</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="hero">
+        <h1>Programación Geométrica</h1>
+        <a href="../index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
+    </div>
+    
+    <div class="container">
+        <h1>Calculadora de Caja</h1>
+        <p>Seleccione una operación:</p>
+        <div class="options">
+            <button id="volumen-maximo-btn">Calcular Volumen Máximo</button>
+            <button id="area-minima-btn">Calcular Área Mínima</button>
+        </div>
+        <div id="inputs" style="display: none;">
+            <p id="input-label">Ingrese el valor:</p>
+            <input type="number" id="input-value" placeholder="Ingrese un valor" step="0.01" min="0">
+            <button id="calcular-btn">Calcular</button>
+        </div>
+        <div id="resultado"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Apuestas</title>
+    <style>
+      :root {
+  --primary-color: #4a90e2;
+  --secondary-color: #5c6ac4;
+  --background-color: #f5f7fa;
+  --text-color: #2d3748;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+      body {
+          font-family: Arial, sans-serif;
+          line-height: 1.6;
+          margin: 0;
+          padding: 20px;
+          background-color: #f4f4f4;
+      }
+      .container {
+          max-width: 600px;
+          margin: auto;
+          background: white;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      h1 {
+          text-align: center;
+      }
+      form {
+          display: flex;
+          flex-direction: column;
+      }
+      label {
+          margin-top: 10px;
+      }
+      input[type="number"], input[type="text"] {
+          padding: 8px;
+          margin-top: 5px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+      }
+      input[type="submit"] {
+          background-color: #4a90e2;
+          color: white;
+          padding: 10px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          margin-top: 20px;
+      }
+      input[type="submit"]:hover {
+          background-color: #4a90e2;
+      }
+      #resultado {
+          margin-top: 20px;
+          padding: 10px;
+          background-color: #e7f3fe;
+          border-left: 6px solid #2196F3;
+      }
+      .hero {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero h1 {
+      font-size: 2rem;
+  }
+  
+  .hero h2 {
+      font-size: 1.2rem;
+  }
+  
+  .nav-icon {
+      top: 1rem;
+      left: 1rem;
+  }
+  
+  .container {
+      grid-template-columns: 1fr;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Juego de Apuestas</h1>
+    <a href="../index.html" class="back-button">
+        <i class="fas fa-arrow-left"></i> Volver
+    </a>
+</div>
+    <div class="container">
+        <form id="gameForm">
+            <br><label for="fichas_iniciales">Fichas iniciales:</label>
+            <input type="number" id="fichas_iniciales" name="fichas_iniciales" required min="1" value="3">
+            
+            <br><label for="jugadas">Número de jugadas:</label>
+            <input type="number" id="jugadas" name="jugadas" required min="1" value="3">
+            
+            <br><label for="prob_ganar">Probabilidad de ganar (entre 0 y 1):</label>
+            <input type="text" id="prob_ganar" name="prob_ganar" required step="0.01" min="0" max="1" value="0.67">
+            
+            <input type="submit" value="Calcular">
+        </form>
+        
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        // JavaScript que simula la lógica de PHP en Java
+        function politicaOptima(fichasIniciales, jugadas, probGanar) {
+            let dp = Array.from({ length: 9 }, () => Array(4).fill(0));
+            
+            // Inicializa los casos base
+            for (let i = 5; i < 9; i++) {
+                dp[i][0] = 1;
+            }
+            
+            // Calcula la programación dinámica
+            for (let jugada = 1; jugada < 4; jugada++) {
+                for (let fichas = 0; fichas < 9; fichas++) {
+                    let mejorProb = dp[fichas][jugada - 1];
+                    
+                    for (let apuesta = 1; apuesta <= fichas; apuesta++) {
+                        let probGanarJugada = probGanar * dp[Math.min(fichas + apuesta, 8)][jugada - 1] + 
+                                                (1 - probGanar) * dp[Math.max(fichas - apuesta, 0)][jugada - 1];
+                        mejorProb = Math.max(mejorProb, probGanarJugada);
+                    }
+                    
+                    dp[fichas][jugada] = mejorProb;
+                }
+            }
+            
+            // Genera la política óptima
+            let politica = [];
+            let fichas = fichasIniciales;
+            for (let jugada = 3; jugada > 0; jugada--) {
+                let mejorApuesta = 0;
+                let mejorProb = dp[fichas][jugada - 1];
+                
+                for (let apuesta = 1; apuesta <= fichas; apuesta++) {
+                    let probGanarJugada = probGanar * dp[Math.min(fichas + apuesta, 8)][jugada - 1] + 
+                                           (1 - probGanar) * dp[Math.max(fichas - apuesta, 0)][jugada - 1];
+                    if (probGanarJugada > mejorProb) {
+                        mejorProb = probGanarJugada;
+                        mejorApuesta = apuesta;
+                    }
+                }
+                
+                politica.push(mejorApuesta);
+            }
+            
+            return [dp[fichasIniciales][3], politica.reverse()];
+        }
+
+        // Maneja el formulario
+        document.getElementById('gameForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let fichasIniciales = parseInt(document.getElementById('fichas_iniciales').value);
+            let jugadas = parseInt(document.getElementById('jugadas').value);
+            let probGanar = parseFloat(document.getElementById('prob_ganar').value);
+
+            if (fichasIniciales < 1 || jugadas < 1 || probGanar < 0 || probGanar > 1) {
+                alert('Por favor, ingrese valores válidos. Las fichas iniciales y jugadas deben ser mayores a 0, y la probabilidad de ganar debe estar entre 0 y 1.');
+                return;
+            }
+
+            // Calcula la política óptima
+            let [probOptima, politica] = politicaOptima(fichasIniciales, jugadas, probGanar);
+
+            // Muestra los resultados
+            document.getElementById('resultado').innerHTML = `
+                <p>Probabilidad óptima de ganar: ${probOptima.toFixed(4)}</p>
+                <p>Política óptima de apuestas: ${politica.join(', ')}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
