@@ -51,29 +51,28 @@ Estructura del Proyecto
 Los archivos del proyecto están organizados en las siguientes carpetas:
 
 /teoria_colas: Modelos relacionados con sistemas de colas, incluyendo:
-
-Modelo de líneas de espera de múltiples servidores
-Modelo de línea de espera con fuentes finitas
-Modelo de línea de espera con un servidor con llegadas Poisson
-Modelo de línea de espera con un servidor
-Esquema de nacimiento y muerte en sistemas de colas
-Modelo de múltiples canales con llegadas Poisson
+  -Modelo de líneas de espera de múltiples servidores
+  -Modelo de línea de espera con fuentes finitas
+  -Modelo de línea de espera con un servidor con llegadas Poisson
+  -Modelo de línea de espera con un servidor
+  -Esquema de nacimiento y muerte en sistemas de colas
+  -Modelo de múltiples canales con llegadas Poisson
 /programacion_lineal: Modelos de optimización y programación lineal, tales como:
 
-Programación separable
-Programación No Convexa
-Programación Fraccionaria
-Programación Cuadrática
-Optimización no restringida con una variable
-Programación Convexa
+  -Programación separable
+  -Programación No Convexa
+  -Programación Fraccionaria
+  -Programación Cuadrática
+  -Optimización no restringida con una variable
+  -Programación Convexa
 /programacion_dinamica: Aplicaciones de programación dinámica en diversos problemas, como:
 
-Distribución de Científicos entre grupos de investigación
-Determinación de Holgura por rechazos
-Programación del Nivel de Empleados
-Modelo de Tamaño de la Fuerza de Trabajo
-Programación Dinámica Probabilística
-Distribución de Brigadas Médicas entre países
+  -Distribución de Científicos entre grupos de investigación
+  -Determinación de Holgura por rechazos
+  -Programación del Nivel de Empleados
+  -Modelo de Tamaño de la Fuerza de Trabajo
+  -Programación Dinámica Probabilística
+  -Distribución de Brigadas Médicas entre países
 README.md: Documento de introducción y descripción general del proyecto.
 
 Autor
